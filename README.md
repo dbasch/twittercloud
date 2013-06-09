@@ -1,4 +1,4 @@
-# twittercloud
+## twittercloud
 
 Generate word clouds from Twitter search
 
@@ -20,7 +20,7 @@ $ lein run soccer
 
 Just generated
 
-!(ScreenShot)[https://raw.github.com/dbasch/twittercloud/master/soccer.png]
+![soccer](https://raw.github.com/dbasch/twittercloud/master/soccer.png)
 
 Have fun!
 
