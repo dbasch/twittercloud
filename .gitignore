@@ -1,0 +1,13 @@
+/target
+/lib
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+/src/twittercloud/config.clj
+*.jar
+*.class
+.lein-deps-sum
+.lein-failures
+.lein-plugins
+.lein-repl-history

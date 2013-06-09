@@ -1,0 +1,6 @@
+;This file should be named config.clj
+(ns twittercloud.config)
+  (def oauth-access-token "your twitter access token")
+  (def oauth-access-token-secret "your twitter access token secret")
+  (def twitter-key "your twitter key")
+  (def twitter-secret "your twitter secret")
