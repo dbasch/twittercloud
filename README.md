@@ -5,7 +5,7 @@ Generate word clouds from Twitter search
 ## Usage
 
 1) edit src/twittercloud/config.sample, set your Twitter credentials, and rename it to 
-sr/twittercloud/config.clj
+src/twittercloud/config.clj
 
 Go [here](https://dev.twitter.com/apps/new) if you don't already have an app with credentials.
 
@@ -20,7 +20,6 @@ $ lein run soccer
 
 Just generated
 ![soccer](https://raw.github.com/dbasch/twittercloud/master/soccer.png)
-
 Have fun!
 
 ## License
