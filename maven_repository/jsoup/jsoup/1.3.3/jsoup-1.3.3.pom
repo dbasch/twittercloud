@@ -5,5 +5,4 @@
   <groupId>jsoup</groupId>
   <artifactId>jsoup</artifactId>
   <version>1.3.3</version>
-  <description>POM was created from install:install-file</description>
 </project>
