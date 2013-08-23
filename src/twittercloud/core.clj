@@ -2,6 +2,8 @@
   (:gen-class :main true)
   (:import processing.core.PApplet wordcram.WordCram wordcram.Placers wordcram.text.Text))
 
+;; use the WordCram library to render a word cloud
+;; with a hardcoded style and font
 (defn draw [text img & opts]
   (let [applet (PApplet.)]
     (def font (.createFont applet (if (not= nil (first opts)) (first opts) "coolvetica/COOLVETI.TTF") 1))
@@ -24,7 +26,7 @@
 
     )
   )
-
+;; draw a word cloud for a text file
 (defn -main [& args]
   (draw (slurp (first args)) (second args) (nth args 2))
   )

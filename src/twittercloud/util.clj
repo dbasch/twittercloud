@@ -1,5 +1,5 @@
 (ns twittercloud.util
- ;Utilities for parsing text
+ ;; Utilities for parsing text
  (:gen-class :main true)
  (:require clojure.string))
 
@@ -7,7 +7,7 @@
 
 (def urls (partial re-seq #"http://\S+"))
 
-;Twitter-style @mentions
+;; twitter-style @mentions
 (def mentions (partial re-seq #"@\S+"))
 
 (defn remove-urls[text]
@@ -21,7 +21,7 @@
 
 (defn status-tokens[text] ((comp tokenize remove-urls remove-mentions) text))
 
-;heuristic for deciding which words to keep from a Twitter-style corpus
+;; heuristic for deciding which words to keep from a twitter-style corpus
 (defn wanted[word]
    (if (and (not= (first word) \@)
         (= nil (stopwords word))
