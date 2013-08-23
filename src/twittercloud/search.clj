@@ -18,14 +18,14 @@
   (let [results (search :oauth-creds creds
                         :params {:q query :count 100 :max_id max-id})
         tweets (:statuses (:body results))
-        new-total (+ total (count tweets))]
-      (println "tweets fetched: " new-total)
-      ;; have we collected at least 1500 tweets yet?
-      (if (< new-total 1500)
-        (let [newbuf (str (print-str (map :text tweets)) " " buf)]
-          ;; keep searching for older tweets
-          (recur newbuf query new-total (maxid tweets)))
-        buf)))
+        new-total (+ total (count tweets))
+        newbuf (str (print-str (map :text tweets)) " " buf)]
+    (println "tweets fetched: " new-total)
+    ;; have we collected at least 1500 tweets yet?
+    (if (< new-total 1500)
+      ;; keep searching for older tweets
+      (recur newbuf query new-total (maxid tweets))
+      newbuf)))
 
 (defn -main [& args]
 
