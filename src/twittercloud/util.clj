@@ -17,7 +17,7 @@
    (reduce #(.replace %1 %2 "") text (mentions text)))
 
 (defn tokenize[text]
- (clojure.string/split text #"[\s#&!:,;\.\\\+-]+"))
+ (clojure.string/split text #"[\"\s#&!:,;\.\\\+-]+"))
 
 (defn status-tokens[text] ((comp tokenize remove-urls remove-mentions) text))
 
