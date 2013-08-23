@@ -1,9 +1,11 @@
 (ns twittercloud.search
-  (:use [clojure.string :only (split trim lower-case)] twittercloud.config twittercloud.util [twittercloud.core :only (draw)]
+  (:use [clojure.string :only (split trim lower-case)]
+        twittercloud.config twittercloud.util [twittercloud.core :only (draw)]
         [twitter.oauth]
         [twitter.api.search])
   (:gen-class :main true))
 
+;; twitter credentials
 (def creds (make-oauth-creds twitter-key
                              twitter-secret
                              oauth-access-token
@@ -19,14 +21,16 @@
                         :params {:q query :count 100 :max_id max-id})
         tweets (:statuses (:body results))
         new-total (+ total (count tweets))
-        newbuf (str (print-str (map :text tweets)) " " buf)]
+        new-buf (str (print-str (map :text tweets)) " " buf)]
     (println "tweets fetched: " new-total)
-    ;; have we collected at least 1500 tweets yet?
+    
     (if (< new-total 1500)
       ;; keep searching for older tweets
-      (recur newbuf query new-total (maxid tweets))
-      newbuf)))
+      (recur new-buf query new-total (maxid tweets))
+      ;; we have enough tweets
+      new-buf)))
 
+;; draw a word cloud for the most recent tweets containing a given word.
 (defn -main [& args]
 
   ;; filter out hashtags and the query word (it would dwarf everything else)
