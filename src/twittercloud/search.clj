@@ -14,7 +14,7 @@
             conf/oauth-access-token-secret))
 
 (defn oldest-id [tweets]
-  (dec (reduce min (map :id tweets))))
+  (dec (apply min (map :id tweets))))
 
 ;; search twitter for results older than max-id, concatenate the text into a string
 ;; if max-id is -1, then we get the most recent tweets
@@ -26,14 +26,15 @@
         new-total (+ total (count tweets))
         new-buf (str (print-str (map :text tweets)) " " buf)]
     (println "tweets fetched: " new-total)
-
+    
     ;; keep searching for older tweets until we have at least 1500
     (if (< new-total 1500)
       (recur new-buf query new-total (oldest-id tweets))
       new-buf)))
 
 ;; keep "interesting" words, remove the query word (it would dwarf everything else)
-(defn keeper[word query-word] (and (util/interesting word) (not= word query-word)))
+(defn keeper [word query-word]
+  (and (util/interesting word) (not= word query-word)))
 
 ;; draw a word cloud for the most recent tweets containing a given word.
 (defn -main [& args]
