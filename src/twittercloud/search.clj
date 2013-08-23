@@ -16,16 +16,16 @@
 ;; if max-id is -1, then we get the most recent tweets
 (defn fetch-tweets[buf query total max-id]
   (let [results (search :oauth-creds creds
-                        :params {:q query :count 100 :max_id max-id})]
-    (let [tweets (:statuses (:body results))
-          new-total (+ total (count tweets))]
-      (println "Tweets fetched: " new-total)
+                        :params {:q query :count 100 :max_id max-id})
+        tweets (:statuses (:body results))
+        new-total (+ total (count tweets))]
+      (println "tweets fetched: " new-total)
       ;; have we collected at least 1500 tweets yet?
       (if (< new-total 1500)
         (let [newbuf (str (print-str (map :text tweets)) " " buf)]
           ;; keep searching for older tweets
           (recur newbuf query new-total (maxid tweets)))
-        buf))))
+        buf)))
 
 (defn -main [& args]
 
