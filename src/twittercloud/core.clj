@@ -22,11 +22,8 @@
       (.drawAll))
 
     (doto (. applet g) (.endDraw) (.save img))
-    (println "saved" img)
+    (println "saved" img)))
 
-    )
-  )
 ;; draw a word cloud for a text file
 (defn -main [& args]
-  (draw (slurp (first args)) (second args) (nth args 2))
-  )
+  (draw (slurp (first args)) (second args) (nth args 2)))
