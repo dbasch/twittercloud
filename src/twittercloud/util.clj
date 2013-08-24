@@ -23,8 +23,7 @@
 
 ;; heuristic for deciding which words to keep from a twitter-style corpus
 (defn interesting[word]
-  (if (and (not= (first word) \@)
-           (not= (first word) \#)
-           (= nil (stopwords word))
-           (> (.length word) 2))
-    true false))
+  (and (not= (first word) \@)
+       (not= (first word) \#)
+       (= nil (stopwords word))
+       (> (.length word) 2)))
