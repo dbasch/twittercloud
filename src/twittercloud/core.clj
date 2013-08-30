@@ -6,14 +6,15 @@
 ;; with a hardcoded style and font
 (defn draw [text img & opts]
   (let [applet (PApplet.)
+        font (.createFont applet (if (not= nil (first opts)) (first opts) "coolvetica/COOLVETI.TTF") 1)
         colors (int-array [(.color applet 204 151 51)
                           (.color applet 102 0 0)
                           (.color applet 151 0 0)
                           (.color applet 204 102 0)
                           (.color applet 10 10 10)])]
-    (def font (.createFont applet (if (not= nil (first opts)) (first opts) "coolvetica/COOLVETI.TTF") 1))
-    (set! (. applet g) (.createGraphics applet 800 600 PApplet/JAVA2D))
-    (.beginDraw (. applet g))
+
+    (set! (.g applet) (.createGraphics applet 800 600 PApplet/JAVA2D))
+    (.beginDraw (.g applet))
     (.colorMode applet PApplet/RGB)
     (.background applet 255)
     (doto (WordCram. applet)
