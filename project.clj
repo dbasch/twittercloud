@@ -1,5 +1,5 @@
 (defproject twittercloud "1.0.0-SNAPSHOT"
-  :description "Create a word cloud from a twitter searchusing WordCram"
+  :description "Create a word cloud from a twitter search using WordCram"
   :repositories {"local" ~(str (.toURI (java.io.File. "maven_repository")))}
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [wordcram "0.5.6"]
